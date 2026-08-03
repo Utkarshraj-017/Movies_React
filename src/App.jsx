@@ -16,6 +16,7 @@ const API_OPTIONS = {
   },
 };
 
+
 const App = () => {
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
@@ -29,6 +30,9 @@ const App = () => {
   // Debounce the search term to prevent making too many API requests
   // by waiting for the user to stop typing for 500ms
   useDebounce(() => setDebouncedSearchTerm(searchTerm), 500, [searchTerm]);
+
+
+  //-----------------------------------------------------------------------------------
 
   // Fetch movies based on search query.
   // If no query is provided, fetch the most popular movies.
@@ -64,6 +68,8 @@ const App = () => {
     }
   };
 
+  //-----------------------------------------------------------------------------------
+
   // Fetch globally trending movies directly from TMDB
   const loadTrendingMovies = async () => {
     try {
@@ -85,6 +91,8 @@ const App = () => {
     }
   };
 
+  //-----------------------------------------------------------------------------------
+
   // Fetch movies whenever the debounced search term changes
   useEffect(() => {
     fetchMovies(debouncedSearchTerm);
@@ -94,6 +102,8 @@ const App = () => {
   useEffect(() => {
     loadTrendingMovies();
   }, []);
+
+  //-----------------------------------------------------------------------------------
 
   return (
     <main>
@@ -109,6 +119,7 @@ const App = () => {
           <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         </header>
 
+        {/* Trending Movies Section */}
         {trendingMovies.length > 0 && (
           <section className="trending">
             <h2>Trending Movies</h2>
@@ -127,7 +138,8 @@ const App = () => {
             </ul>
           </section>
         )}
-
+        
+        {/* All Movies Section */}
         <section className="all-movies">
           <h2>All Movies</h2>
 
