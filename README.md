@@ -15,7 +15,7 @@ A modern React application for discovering movies and TV shows. Search your favo
 - React
 - Vite
 - JavaScript
-- CSS
+- Tailwind CSS
 - TMDB API (or your movie API)
 
 ## 📦 Installation
